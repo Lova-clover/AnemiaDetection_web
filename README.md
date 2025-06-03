@@ -48,3 +48,45 @@
 - **Numpy**: 수치 계산
 
 - **Pillow (PIL)**: 이미지 처리
+
+---
+
+# 🩸 Anemia Detection using ResNet18
+
+이 프로젝트는 결막 이미지(conjunctiva images)를 기반으로 빈혈 여부를 예측하는 AI 모델을 구축한 것입니다. PyTorch 프레임워크를 사용하여 ResNet18 기반의 이진 분류(Binary Classification) 모델을 훈련하고 평가했습니다.
+
+## 📁 주요 구성
+- **ResNet18 모델 구현**: 사전학습된 모델 기반의 전이학습(fine-tuning)
+- **이미지 증강**: 학습 데이터 다양성을 확보하기 위한 Albumentations 기반 변환 적용
+- **Loss Function**: Focal Loss를 사용하여 불균형 클래스 문제 대응
+- **교차 검증**: 5-Fold Cross Validation 적용
+- **정확도 향상**: Mixup, EarlyStopping 등 다양한 전략 적용
+
+## 🛠 환경 설정 (Environment)
+- Python 3.8+
+- torch >= 1.12
+- torchvision
+- albumentations
+- opencv-python
+- matplotlib
+- scikit-learn
+
+## 📊 모델 성능
+
+모든 Fold에서 한 이미지당 15배의 데이터 증강을 적용하여 모델을 학습했습니다.  
+이는 과적합 없이 가장 우수한 성능을 보인 배수로, 여러 배수를 실험한 결과 15배에서 최적의 성능을 확인하였습니다.
+
+| Fold | Accuracy | Precision | Recall | F1 Score |
+|------|----------|-----------|--------|----------|
+| 1    | 0.8864   | 0.8846    | 0.9200 | 0.9020   |
+| 2    | 0.8864   | 0.9545    | 0.8400 | 0.8936   |
+| 3    | 0.9773   | 1.0000    | 0.9600 | 0.9796   |
+| 4    | 0.9302   | 0.9200    | 0.9583 | 0.9388   |
+| 5    | 0.8140   | 0.9000    | 0.7500 | 0.8182   |
+
+총 5개의 Fold 결과에서 전반적으로 높은 정확도와 F1 Score를 달성하였으며, 특히 3번째 Fold에서는 모든 지표가 매우 뛰어난 성능을 보였습니다.
+
+## 데이터 출처
+
+본 프로젝트에서 모델에 사용한 결막 이미지 데이터셋은 Kaggle의 Eye-Anemia dataset(https://www.kaggle.com/datasets/nadiwidi/eyeanemia) 에서 가져왔습니다.
+

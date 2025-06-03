@@ -86,7 +86,8 @@
 
 총 5개의 Fold 결과에서 전반적으로 높은 정확도와 F1 Score를 달성하였으며, 특히 3번째 Fold에서는 모든 지표가 매우 뛰어난 성능을 보였습니다.
 
-## 데이터 출처
+## 데이터 출처 및 참고 논문
 
 본 프로젝트에서 모델에 사용한 결막 이미지 데이터셋은 Kaggle의 Eye-Anemia dataset(https://www.kaggle.com/datasets/nadiwidi/eyeanemia) 에서 가져왔습니다.
 
+[Detection of anemia from image of the anterior conjunctiva of the eye by image processing and thresholding](https://ieeexplore.ieee.org/document/8289053) 논문을 참고하여 진행하였습니다.
